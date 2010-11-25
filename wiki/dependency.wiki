@@ -1,4 +1,4 @@
-#This page describes library dependencies.
+#summary This page describes library dependencies
 
 = Introduction =
 
