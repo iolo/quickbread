@@ -146,7 +146,7 @@ public class APIUtils {
 		return true;
 	}
 	
-	public boolean isValidElement(List<Object> list) {
+	public boolean isValidElement(List<Element> list) {
 		
 		if( null == list )
 			return false;
