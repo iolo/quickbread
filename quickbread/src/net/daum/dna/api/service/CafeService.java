@@ -404,6 +404,10 @@ public class CafeService {
 		queryString.append(required.getOption("boardId"));
 		queryString.append(".");
 		queryString.append(APIUtils._XML);
+		
+		Params content = new Params();
+		content.setOption("content", required.getOption("content"));
+		queryString.append(APIUtils.getInstance().buildQueryString(content));
 
 		return cafeDAO.writeArticle(queryString.toString());
 	}
@@ -423,7 +427,10 @@ public class CafeService {
 		queryString.append(required.getOption("boardId"));
 		queryString.append(".");
 		queryString.append(APIUtils._XML);
-		queryString.append(APIUtils.getInstance().buildQueryString(option));
+		
+		Params content = new Params();
+		content.setOption("content", required.getOption("content"));
+		queryString.append(APIUtils.getInstance().buildQueryString(content , option));
 
 		return cafeDAO.writeArticle(queryString.toString());
 	}
@@ -442,6 +449,10 @@ public class CafeService {
 		queryString.append(required.getOption("boardId"));
 		queryString.append(".");
 		queryString.append(APIUtils._XML);
+		
+		Params content = new Params();
+		content.setOption("content", required.getOption("content"));
+		queryString.append(APIUtils.getInstance().buildQueryString(content));
 
 		return cafeDAO.writeArticleAsXML(queryString.toString());
 	}
@@ -461,7 +472,10 @@ public class CafeService {
 		queryString.append(required.getOption("boardId"));
 		queryString.append(".");
 		queryString.append(APIUtils._XML);
-		queryString.append(APIUtils.getInstance().buildQueryString(option));
+		
+		Params content = new Params();
+		content.setOption("content", required.getOption("content"));
+		queryString.append(APIUtils.getInstance().buildQueryString(content , option));
 
 		return cafeDAO.writeArticleAsXML(queryString.toString());
 	}
@@ -480,6 +494,10 @@ public class CafeService {
 		queryString.append(required.getOption("boardId"));
 		queryString.append(".");
 		queryString.append(APIUtils._XML);
+		
+		Params content = new Params();
+		content.setOption("content", required.getOption("content"));
+		queryString.append(APIUtils.getInstance().buildQueryString(content));
 
 		return cafeDAO.writeArticleAsJSON(queryString.toString());
 	}
@@ -499,7 +517,10 @@ public class CafeService {
 		queryString.append(required.getOption("boardId"));
 		queryString.append(".");
 		queryString.append(APIUtils._XML);
-		queryString.append(APIUtils.getInstance().buildQueryString(option));
+		
+		Params content = new Params();
+		content.setOption("content", required.getOption("content"));
+		queryString.append(APIUtils.getInstance().buildQueryString(content , option));
 
 		return cafeDAO.writeArticleAsJSON(queryString.toString());
 	}

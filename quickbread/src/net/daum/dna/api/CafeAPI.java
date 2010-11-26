@@ -236,7 +236,7 @@ public interface CafeAPI {
 	 *            - 게시판의 ID
 	 * @return 게시글 작성 결과를 객체 형태 또는 null 반환.
 	 */
-	public CafeWriteRes writeArticle(String cafeCode, String boardId);
+	public CafeWriteRes writeArticle(String cafeCode, String boardId , String content);
 
 	/**
 	 * 카페에 게시글을 작성 한다.
@@ -252,7 +252,7 @@ public interface CafeAPI {
 	 *            
 	 * @return 게시글 작성 결과를 객체 형태 또는 null 반환.
 	 */
-	public CafeWriteRes writeArticle(String cafeCode, String boardId, Params option);
+	public CafeWriteRes writeArticle(String cafeCode, String boardId, String content , Params option);
 
 	/**
 	 * 카페에 게시글을 작성 한다.
@@ -264,7 +264,7 @@ public interface CafeAPI {
 	 *            - 게시판의 ID
 	 * @return 게시글 작성 결과를 XML String 형태로 반환.
 	 */
-	public String writeArticleAsXML(String cafeCode, String boardId);
+	public String writeArticleAsXML(String cafeCode, String boardId , String content);
 
 	/**
 	 * 카페에 게시글을 작성 한다.
@@ -279,7 +279,7 @@ public interface CafeAPI {
 	 *            
 	 * @return 게시글 작성 결과를 XML String 형태로 반환.
 	 */
-	public String writeArticleAsXML(String cafeCode, String boardId, Params option);
+	public String writeArticleAsXML(String cafeCode, String boardId, String content, Params option);
 
 	/**
 	 * 카페에 게시글을 작성 한다.
@@ -290,7 +290,7 @@ public interface CafeAPI {
 	 *            - 게시판의 ID
 	 * @return 게시글 작성 결과를 JSON String 형태로 반환.
 	 */
-	public String writeArticleAsJSON(String cafeCode, String boardId);
+	public String writeArticleAsJSON(String cafeCode, String boardId , String content);
 
 	/**
 	 * 카페에 게시글을 작성 한다.
@@ -305,6 +305,6 @@ public interface CafeAPI {
 	 *            
 	 * @return 게시글 작성 결과를 JSON String 형태로 반환.
 	 */
-	public String writeArticleAsJSON(String cafeCode, String boardId, Params option);
+	public String writeArticleAsJSON(String cafeCode, String boardId, String content , Params option);
 
 }

@@ -326,10 +326,11 @@ public class DefaultCafeAPI implements CafeAPI {
 	 * java.lang.String)
 	 */
 	@Override
-	public CafeWriteRes writeArticle(String cafeCode, String boardId) {
+	public CafeWriteRes writeArticle(String cafeCode, String boardId , String content) {
 		Params required = new Params();
 		required.setOption("cafeCode", cafeCode);
 		required.setOption("boardId", boardId);
+		required.setOption("content", content);
 
 		return service.writeArticle(required);
 	}
@@ -341,10 +342,11 @@ public class DefaultCafeAPI implements CafeAPI {
 	 * java.lang.String, net.daum.dna.params.Params)
 	 */
 	@Override
-	public CafeWriteRes writeArticle(String cafeCode, String boardId, Params option) {
+	public CafeWriteRes writeArticle(String cafeCode, String boardId, String content ,Params option) {
 		Params required = new Params();
 		required.setOption("cafeCode", cafeCode);
 		required.setOption("boardId", boardId);
+		required.setOption("content", content);
 
 		return service.writeArticle(required, option);
 	}
@@ -356,11 +358,12 @@ public class DefaultCafeAPI implements CafeAPI {
 	 * java.lang.String)
 	 */
 	@Override
-	public String writeArticleAsXML(String cafeCode, String boardId) {
+	public String writeArticleAsXML(String cafeCode, String boardId , String content) {
 		Params required = new Params();
 		required.setOption("cafeCode", cafeCode);
 		required.setOption("boardId", boardId);
-
+		required.setOption("content", content);
+		
 		return service.writeArticleAsXML(required);
 	}
 
@@ -371,11 +374,12 @@ public class DefaultCafeAPI implements CafeAPI {
 	 * java.lang.String, net.daum.dna.params.Params)
 	 */
 	@Override
-	public String writeArticleAsXML(String cafeCode, String boardId, Params option) {
+	public String writeArticleAsXML(String cafeCode, String boardId, String content , Params option) {
 		Params required = new Params();
 		required.setOption("cafeCode", cafeCode);
 		required.setOption("boardId", boardId);
-
+		required.setOption("content", content);
+		
 		return service.writeArticleAsXML(required, option);
 	}
 
@@ -386,11 +390,12 @@ public class DefaultCafeAPI implements CafeAPI {
 	 * java.lang.String)
 	 */
 	@Override
-	public String writeArticleAsJSON(String cafeCode, String boardId) {
+	public String writeArticleAsJSON(String cafeCode, String boardId , String content) {
 		Params required = new Params();
 		required.setOption("cafeCode", cafeCode);
 		required.setOption("boardId", boardId);
-
+		required.setOption("content", content);
+		
 		return service.writeArticleAsJSON(required);
 	}
 
@@ -401,11 +406,12 @@ public class DefaultCafeAPI implements CafeAPI {
 	 * java.lang.String, net.daum.dna.params.Params)
 	 */
 	@Override
-	public String writeArticleAsJSON(String cafeCode, String boardId, Params option) {
+	public String writeArticleAsJSON(String cafeCode, String boardId, String content , Params option) {
 		Params required = new Params();
 		required.setOption("cafeCode", cafeCode);
 		required.setOption("boardId", boardId);
-
+		required.setOption("content", content);
+		
 		return service.writeArticleAsJSON(required, option);
 	}
 
