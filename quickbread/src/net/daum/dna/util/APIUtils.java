@@ -138,6 +138,15 @@ public class APIUtils {
 		return util;
 	}
 
+	public boolean isValidElement(Element em) {
+		
+		if( null == em )
+			return false;
+		
+		return true;
+	}
+	
+	
 	/**
 	 * 입력받은 InputStream을 string으로 변환시켜 줍니다.
 	 *
