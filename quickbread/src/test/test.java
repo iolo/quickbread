@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Scanner;
+
 import junit.framework.TestCase;
 import net.daum.dna.api.BlogAPI;
 import net.daum.dna.api.basic.DefaultBlogAPI;
@@ -13,6 +15,17 @@ public class test extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
+		
+//		DefaultDaumOAuth oauth = new DefaultDaumOAuth("ced48b93-7e09-4ce2-b061-8e72bf18dad5", "3MNJouFjolp7pf_XcjKu-5wXgxti.IpXf-hbI5oCJWI5y6pf5iBvNQ00");
+//		System.out.println(oauth.getAuthorizeURL("http://blog.daum.net/i-trust-y"));
+//		Scanner sc = new Scanner( System.in );
+//		String veri = sc.nextLine();	
+//		DaumToken token =  oauth.getAccessToken(veri);
+//		System.out.println(token);
+
+// 태일님꺼
+//		DaumConsumer consumer = new DaumConsumer("ba6c8594-d25e-40cb-aade-001bd66a26c4", "R6.9k7q9pvmempPfTvH3jPaWDqjR3JR7nporu9DyWL91PTBV_pMU.w00","http://blog.daum.net/painhealer");	
+//		DaumToken token = 		new DaumToken("66c33306-48ff-4a98-afd5-ff8accc4c9e1", "WsXL2k_a37.9IcU-QvTTn-m.D3s4DZ4gkrGiAfY36Y39XHiBO87DHA00");
 		
 	}
 
