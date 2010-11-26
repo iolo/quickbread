@@ -140,7 +140,7 @@ public class APIUtils {
 
 	public boolean isValidElement(Element em) {
 		
-		if( null == em )
+		if( null == em || 0 == em.getContentSize())
 			return false;
 		
 		return true;
@@ -148,7 +148,7 @@ public class APIUtils {
 	
 	public boolean isValidElement(List<Element> list) {
 		
-		if( null == list )
+		if( null == list || 0 == list.size() )
 			return false;
 		
 		return true;
