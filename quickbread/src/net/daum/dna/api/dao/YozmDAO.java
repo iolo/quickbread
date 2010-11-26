@@ -638,8 +638,9 @@ public class YozmDAO {
 
 	/**
 	 * GetUserArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the user articles
 	 */
 	public List<YozmUserArticles> getUserArticles(String queryString) {
@@ -731,8 +732,9 @@ public class YozmDAO {
 
 	/**
 	 * Parses the check join.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the yozm is joined
 	 */
 	private YozmUserJoined parseCheckJoin(HttpURLConnection conn) {
@@ -748,7 +750,8 @@ public class YozmDAO {
 			if (util.isAPIError(root) == true)
 				return null;
 
-			response.setJoined(Boolean.parseBoolean(root.getChild("joined").getValue()));
+			if (util.isValidElement(root.getChild("joined")))
+				response.setJoined(Boolean.parseBoolean(root.getChild("joined").getValue()));
 
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -760,8 +763,9 @@ public class YozmDAO {
 
 	/**
 	 * Parses the join yozm.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the yozm join
 	 */
 	private YozmUserJoin parseJoinYozm(HttpURLConnection conn) {
@@ -775,7 +779,8 @@ public class YozmDAO {
 			if (util.isAPIError(root) == true)
 				return null;
 
-			response.setStatus(Integer.parseInt(root.getChild("status").getValue()));
+			if (util.isValidElement(root.getChild("status")))
+				response.setStatus(Integer.parseInt(root.getChild("status").getValue()));
 
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -794,39 +799,59 @@ public class YozmDAO {
 	 */
 	private YozmArticle parseArticle(Element em) {
 		YozmArticle msg = new YozmArticle();
-		msg.setMsgId(Integer.parseInt(em.getChild("msg_id").getValue()));
-		msg.setType(em.getChild("type").getValue());
-		msg.setText(em.getChild("text").getValue());
-		msg.setPlainText(em.getChild("plain_text").getValue());
-		msg.setHtmlText(em.getChild("html_text").getValue());
-		msg.setSourceName(em.getChild("source_name").getValue());
-		msg.setReplyCnt(Integer.parseInt(em.getChild("reply_cnt").getValue()));
-		msg.setQuoteCnt(Integer.parseInt(em.getChild("quote_cnt").getValue()));
-		msg.setFavorited(em.getChild("favorited").getValue());
-		msg.setPermanentURL(em.getChild("permanent_url").getValue());
-		msg.setPubDate(em.getChild("pub_date").getValue());
+		if (util.isValidElement(em.getChild("msg_id")))
+			msg.setMsgId(Integer.parseInt(em.getChild("msg_id").getValue()));
+		if (util.isValidElement(em.getChild("type")))
+			msg.setType(em.getChild("type").getValue());
+		if (util.isValidElement(em.getChild("text")))
+			msg.setText(em.getChild("text").getValue());
+		if (util.isValidElement(em.getChild("plain_text")))
+			msg.setPlainText(em.getChild("plain_text").getValue());
+		if (util.isValidElement(em.getChild("html_text")))
+			msg.setHtmlText(em.getChild("html_text").getValue());
+		if (util.isValidElement(em.getChild("source_name")))
+			msg.setSourceName(em.getChild("source_name").getValue());
+		if (util.isValidElement(em.getChild("reply_cnt")))
+			msg.setReplyCnt(Integer.parseInt(em.getChild("reply_cnt").getValue()));
+		if (util.isValidElement(em.getChild("quote_cnt")))
+			msg.setQuoteCnt(Integer.parseInt(em.getChild("quote_cnt").getValue()));
+		if (util.isValidElement(em.getChild("favorited")))
+			msg.setFavorited(em.getChild("favorited").getValue());
+		if (util.isValidElement(em.getChild("permanent_url")))
+			msg.setPermanentURL(em.getChild("permanent_url").getValue());
+		if (util.isValidElement(em.getChild("pub_date")))
+			msg.setPubDate(em.getChild("pub_date").getValue());
 
 		if (em.getChild("user").getContentSize() != 0) {
 			Element elemUser = em.getChild("user");
-			msg.setUserURLName(elemUser.getChild("url_name").getValue());
-			msg.setUserNickName(elemUser.getChild("nickname").getValue());
-			msg.setUserProfileImgURL(elemUser.getChild("profile_img_url").getValue());
+			if (util.isValidElement(elemUser.getChild("url_name")))
+				msg.setUserURLName(elemUser.getChild("url_name").getValue());
+			if (util.isValidElement(elemUser.getChild("nickname")))
+				msg.setUserNickName(elemUser.getChild("nickname").getValue());
+			if (util.isValidElement(elemUser.getChild("profile_img_url")))
+				msg.setUserProfileImgURL(elemUser.getChild("profile_img_url").getValue());
 		}
 		if (em.getChild("attachment").getContentSize() != 0) {
 			Element elemAttachment = em.getChild("attachment");
-			msg.setAttachmentKey(elemAttachment.getChild("key").getValue());
-			msg.setAttachmentType(elemAttachment.getChild("type").getValue());
-			msg.setAttachmentName(elemAttachment.getChild("name").getValue());
-			msg.setAttachmentThumbnailURL(elemAttachment.getChild("thumbnail_url").getValue());
-			msg.setAttachmentImageURL(elemAttachment.getChild("img_url").getValue());
+			if (util.isValidElement(elemAttachment.getChild("key")))
+				msg.setAttachmentKey(elemAttachment.getChild("key").getValue());
+			if (util.isValidElement(elemAttachment.getChild("type")))
+				msg.setAttachmentType(elemAttachment.getChild("type").getValue());
+			if (util.isValidElement(elemAttachment.getChild("name")))
+				msg.setAttachmentName(elemAttachment.getChild("name").getValue());
+			if (util.isValidElement(elemAttachment.getChild("thumbnail_url")))
+				msg.setAttachmentThumbnailURL(elemAttachment.getChild("thumbnail_url").getValue());
+			if (util.isValidElement(elemAttachment.getChild("img_url")))
+				msg.setAttachmentImageURL(elemAttachment.getChild("img_url").getValue());
 		}
 		return msg;
 	}
 
 	/**
 	 * Parses the search articles.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the yozm articles
 	 */
 	private YozmArticles parseSearchArticles(HttpURLConnection conn) {
@@ -842,19 +867,23 @@ public class YozmDAO {
 
 			@SuppressWarnings("unchecked")
 			List<Element> childList = root.getChildren("message");
-			for (Element em : childList) {
-				YozmArticleSet articles = new YozmArticleSet();
+			if (util.isValidElement(childList)) {
 
-				if (em.getChild("parent_msg") != null)
-					articles.setParentArticle(parseArticle(em.getChild("parent_msg")));
+				for (Element em : childList) {
+					YozmArticleSet articles = new YozmArticleSet();
 
-				if (em.getChild("original_msg") != null)
-					articles.setParentArticle(parseArticle(em.getChild("original_msg")));
+					if (util.isValidElement(em))
+						articles.setWriteArticle(parseArticle(em));
 
-				articles.setWriteArticle(parseArticle(em));
-				response.addArticle(articles);
+					if (util.isValidElement(em.getChild("parent_msg")))
+						articles.setParentArticle(parseArticle(em.getChild("parent_msg")));
+
+					if (util.isValidElement(em.getChild("original_msg")))
+						articles.setParentArticle(parseArticle(em.getChild("original_msg")));
+
+					response.addArticle(articles);
+				}
 			}
-
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -865,8 +894,9 @@ public class YozmDAO {
 
 	/**
 	 * Parses the write article.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the yozm write res
 	 */
 	private YozmWriteRes parseWriteArticle(HttpURLConnection conn) {
@@ -883,11 +913,12 @@ public class YozmDAO {
 
 			Element elem = root.getChild("message");
 
-			if (elem.getChild("parent_msg") != null) {
+			if (util.isValidElement(elem))
+				response.setWriteArticle(parseArticle(elem));
+
+			if (util.isValidElement(elem.getChild("parent_msg"))) {
 				response.setParentArticle(parseArticle(elem.getChild("parent_msg")));
 			}
-			response.setWriteArticle(parseArticle(elem));
-
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -898,8 +929,9 @@ public class YozmDAO {
 
 	/**
 	 * Parses the articles list.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the yozm articles
 	 */
 	private YozmArticles parseArticlesList(HttpURLConnection conn) {
@@ -918,13 +950,15 @@ public class YozmDAO {
 			for (Element em : childList) {
 				YozmArticleSet articles = new YozmArticleSet();
 
-				if (em.getChild("parent_msg") != null)
+				if (util.isValidElement(em))
+					articles.setWriteArticle(parseArticle(em));
+
+				if (util.isValidElement(em.getChild("parent_msg")))
 					articles.setParentArticle(parseArticle(em.getChild("parent_msg")));
 
-				if (em.getChild("original_msg") != null)
+				if (util.isValidElement(em.getChild("original_msg")))
 					articles.setParentArticle(parseArticle(em.getChild("original_msg")));
 
-				articles.setWriteArticle(parseArticle(em));
 				response.addArticle(articles);
 			}
 		} catch (JDOMException e) {
@@ -937,8 +971,9 @@ public class YozmDAO {
 
 	/**
 	 * Parses the user info.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the yozm user info
 	 */
 	private YozmUserInfo parseUserInfo(HttpURLConnection conn) {
@@ -951,7 +986,9 @@ public class YozmDAO {
 			root = doc.getRootElement();
 			if (util.isAPIError(root) == true)
 				return null;
-			response = parseInfo(root.getChild("user"));
+
+			if (util.isValidElement(root.getChild("user")))
+				response = parseInfo(root.getChild("user"));
 
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -970,42 +1007,67 @@ public class YozmDAO {
 	 */
 	private YozmUserInfo parseInfo(Element em) {
 		YozmUserInfo info = new YozmUserInfo();
-		Element user_elem = (Element) em.getChild("user_info");
+		Element user_elem = em.getChild("user_info");
 
-		info.setLikes(user_elem.getChild("likes").getValue());
-		info.setDisLikes(user_elem.getChild("dislikes").getValue());
-		info.setDoWellThings(user_elem.getChild("do_well_things").getValue());
-		info.setLikePlaces(user_elem.getChild("like_places").getValue());
-		info.setIntroduce(user_elem.getChild("introduce").getValue());
-		info.setJobType(user_elem.getChild("job_type").getValue());
-		info.setJobName(user_elem.getChild("job_name").getValue());
+		if (util.isValidElement(user_elem.getChild("likes")))
+			info.setLikes(user_elem.getChild("likes").getValue());
+		if (util.isValidElement(user_elem.getChild("dislikes")))
+			info.setDisLikes(user_elem.getChild("dislikes").getValue());
+		if (util.isValidElement(user_elem.getChild("do_well_things")))
+			info.setDoWellThings(user_elem.getChild("do_well_things").getValue());
+		if (util.isValidElement(user_elem.getChild("like_places")))
+			info.setLikePlaces(user_elem.getChild("like_places").getValue());
+		if (util.isValidElement(user_elem.getChild("introduce")))
+			info.setIntroduce(user_elem.getChild("introduce").getValue());
+		if (util.isValidElement(user_elem.getChild("job_type")))
+			info.setJobType(user_elem.getChild("job_type").getValue());
+		if (util.isValidElement(user_elem.getChild("job_name")))
+			info.setJobName(user_elem.getChild("job_name").getValue());
 
-		info.setNickName(em.getChild("nickname").getValue());
-		info.setURLName(em.getChild("url_name").getValue());
-		info.setProfileImgURL(em.getChild("profile_img_url").getValue());
-		info.setProfileBigImgURL(em.getChild("profile_big_img_url").getValue());
-		info.setFollowingCnt(Integer.parseInt(em.getChild("following_cnt").getValue()));
-		info.setFollowerCnt(Integer.parseInt(em.getChild("follower_cnt").getValue()));
-		info.setAge(Integer.parseInt(em.getChild("age").getValue()));
-		info.setBloodtype(em.getChild("blood_type").getValue());
-		info.setFollow(Boolean.parseBoolean(em.getChild("is_follow").getValue()));
-		info.setFollower(Boolean.parseBoolean(em.getChild("is_follower").getValue()));
-		info.setBothFollow(Boolean.parseBoolean(em.getChild("is_both_follow").getValue()));
-		info.setMessageCnt(Integer.parseInt(em.getChild("msg_cnt").getValue()));
-		info.setSex(em.getChild("sex").getValue());
+		if (util.isValidElement(em.getChild("likes")))
+			info.setNickName(em.getChild("nickname").getValue());
+		if (util.isValidElement(em.getChild("url_name")))
+			info.setURLName(em.getChild("url_name").getValue());
+		if (util.isValidElement(em.getChild("profile_img_url")))
+			info.setProfileImgURL(em.getChild("profile_img_url").getValue());
+		if (util.isValidElement(em.getChild("profile_big_img_url")))
+			info.setProfileBigImgURL(em.getChild("profile_big_img_url").getValue());
+		if (util.isValidElement(em.getChild("following_cnt")))
+			info.setFollowingCnt(Integer.parseInt(em.getChild("following_cnt").getValue()));
+		if (util.isValidElement(em.getChild("follower_cnt")))
+			info.setFollowerCnt(Integer.parseInt(em.getChild("follower_cnt").getValue()));
+		if (util.isValidElement(em.getChild("age")))
+			info.setAge(Integer.parseInt(em.getChild("age").getValue()));
+		if (util.isValidElement(em.getChild("blood_type")))
+			info.setBloodtype(em.getChild("blood_type").getValue());
+		if (util.isValidElement(em.getChild("is_follow")))
+			info.setFollow(Boolean.parseBoolean(em.getChild("is_follow").getValue()));
+		if (util.isValidElement(em.getChild("is_follower")))
+			info.setFollower(Boolean.parseBoolean(em.getChild("is_follower").getValue()));
+		if (util.isValidElement(em.getChild("is_both_follow")))
+			info.setBothFollow(Boolean.parseBoolean(em.getChild("is_both_follow").getValue()));
+		if (util.isValidElement(em.getChild("msg_cnt")))
+			info.setMessageCnt(Integer.parseInt(em.getChild("msg_cnt").getValue()));
+		if (util.isValidElement(em.getChild("sex")))
+			info.setSex(em.getChild("sex").getValue());
 
-		info.setOpenProfile(Boolean.parseBoolean(em.getChild("is_open_profile").getValue()));
-		info.setOpenYozm(Boolean.parseBoolean(em.getChild("is_open_yozm").getValue()));
-		info.setSexCode(em.getChild("sex_code").getValue());
-		info.setBirthday(em.getChild("birthday").getValue());
+		if (util.isValidElement(em.getChild("is_open_profile")))
+			info.setOpenProfile(Boolean.parseBoolean(em.getChild("is_open_profile").getValue()));
+		if (util.isValidElement(em.getChild("is_open_yozm")))
+			info.setOpenYozm(Boolean.parseBoolean(em.getChild("is_open_yozm").getValue()));
+		if (util.isValidElement(em.getChild("sex_code")))
+			info.setSexCode(em.getChild("sex_code").getValue());
+		if (util.isValidElement(em.getChild("birthday")))
+			info.setBirthday(em.getChild("birthday").getValue());
 
 		return info;
 	}
 
 	/**
 	 * Parses the user articles.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -1022,22 +1084,31 @@ public class YozmDAO {
 				return null;
 
 			List<Element> childList = root.getChildren("message");
-			for (Element em : childList) {
-				YozmUserArticles tempArticles = new YozmUserArticles();
-				tempArticles.setArticleUserInfo(parseInfo(em.getChild("user")));
-				tempArticles.setWriteArticle(parseArticle(em));
 
-				if (em.getChild("parent_msg") != null) {
-					tempArticles.setParentUserInfo(parseInfo(em.getChild("parent_msg").getChild("user")));
-					tempArticles.setParentArticle(parseArticle(em.getChild("parent_msg")));
+			if (util.isValidElement(childList)) {
+				for (Element em : childList) {
+					YozmUserArticles tempArticles = new YozmUserArticles();
+
+					if (util.isValidElement(em))
+						tempArticles.setWriteArticle(parseArticle(em));
+					if (util.isValidElement(em.getChild("user")))
+						tempArticles.setArticleUserInfo(parseInfo(em.getChild("user")));
+
+					if (util.isValidElement(em.getChild("parent_msg"))) {
+						if (util.isValidElement(em.getChild("parent_msg")))
+							tempArticles.setParentArticle(parseArticle(em.getChild("parent_msg")));
+						if (util.isValidElement(em.getChild("parent_msg").getChild("user")))
+							tempArticles.setParentUserInfo(parseInfo(em.getChild("parent_msg").getChild("user")));
+					}
+					if (util.isValidElement(em.getChild("originam_msg"))) {
+						if (util.isValidElement(em.getChild("original_msg")))
+							tempArticles.setOriginalArticle(parseArticle(em.getChild("original_msg")));
+						if (util.isValidElement(em.getChild("originam_msg").getChild("user")))
+							tempArticles.setOriginalUserInfo(parseInfo(em.getChild("original_msg").getChild("user")));
+					}
+					response.add(tempArticles);
 				}
-				if (em.getChild("original_msg") != null) {
-					tempArticles.setOriginalUserInfo(parseInfo(em.getChild("original_msg").getChild("user")));
-					tempArticles.setOriginalArticle(parseArticle(em.getChild("original_msg")));
-				}
-				response.add(tempArticles);
 			}
-
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

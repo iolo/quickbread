@@ -31,7 +31,7 @@ public class CafeDAO {
 
 	/** The oauth. */
 	private DaumOAuth oauth;
-	
+
 	/** The util. */
 	private APIUtils util;
 
@@ -68,8 +68,9 @@ public class CafeDAO {
 
 	/**
 	 * GetAlarmRes DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the alarm res
 	 */
 	public CafeAlarmRes getAlarmRes(String queryString) {
@@ -98,8 +99,9 @@ public class CafeDAO {
 
 	/**
 	 * GetAlarmRes DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the alarm res as xml
 	 */
 	public String getAlarmResAsXML(String queryString) {
@@ -129,8 +131,9 @@ public class CafeDAO {
 
 	/**
 	 * GetAlarmRes DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the alarm res as json
 	 */
 	public String getAlarmResAsJSON(String queryString) {
@@ -143,7 +146,7 @@ public class CafeDAO {
 
 		try {
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				String XMLQuery = util.changeToString(conn.getInputStream());
@@ -161,8 +164,9 @@ public class CafeDAO {
 
 	/**
 	 * GetArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the articles
 	 */
 	public CafeBoardArticles getArticles(String queryString) {
@@ -177,7 +181,7 @@ public class CafeDAO {
 
 		try {
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response = parseBoardArticle(conn);
@@ -197,8 +201,9 @@ public class CafeDAO {
 
 	/**
 	 * GetArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the articles as xml
 	 */
 	public String getArticlesAsXML(String queryString) {
@@ -211,7 +216,7 @@ public class CafeDAO {
 
 		try {
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response.append(util.changeToString(conn.getInputStream()));
@@ -229,8 +234,9 @@ public class CafeDAO {
 
 	/**
 	 * GetArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the articles as json
 	 */
 	public String getArticlesAsJSON(String queryString) {
@@ -242,7 +248,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_ARTICLES_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				String XMLQuery = util.changeToString(conn.getInputStream());
@@ -261,8 +267,9 @@ public class CafeDAO {
 
 	/**
 	 * GetBoards DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the boards
 	 */
 	public List<CafeBoard> getBoards(String queryString) {
@@ -274,7 +281,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_BOARDS_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response = parseBoards(conn);
@@ -292,8 +299,9 @@ public class CafeDAO {
 
 	/**
 	 * GetBoards DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the boards as xml
 	 */
 	public String getBoardsAsXML(String queryString) {
@@ -305,7 +313,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_BOARDS_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response.append(util.changeToString(conn.getInputStream()));
@@ -323,8 +331,9 @@ public class CafeDAO {
 
 	/**
 	 * GetBoards DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the boards as json
 	 */
 	public String getBoardsAsJSON(String queryString) {
@@ -336,7 +345,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_BOARDS_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				String XMLQuery = util.changeToString(conn.getInputStream());
@@ -355,8 +364,9 @@ public class CafeDAO {
 
 	/**
 	 * GetFavoriteCafes DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the favorite cafes
 	 */
 	public List<CafeFavor> getFavoriteCafes(String queryString) {
@@ -368,7 +378,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_FAVORITE_CAFE_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response = parseFavorCafe(conn);
@@ -385,8 +395,9 @@ public class CafeDAO {
 
 	/**
 	 * GetFavoriteCafes DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the favorite cafes as xml
 	 */
 	public String getFavoriteCafesAsXML(String queryString) {
@@ -398,7 +409,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_FAVORITE_CAFE_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response.append(util.changeToString(conn.getInputStream()));
@@ -415,8 +426,9 @@ public class CafeDAO {
 
 	/**
 	 * GetFavoriteCafes DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the favorite cafes as json
 	 */
 	public String getFavoriteCafesAsJSON(String queryString) {
@@ -429,7 +441,7 @@ public class CafeDAO {
 			url.append(queryString);
 
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				String XMLQuery = util.changeToString(conn.getInputStream());
@@ -447,8 +459,9 @@ public class CafeDAO {
 
 	/**
 	 * GetRecentArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the recent articles
 	 */
 	public CafeRecentArticles getRecentArticles(String queryString) {
@@ -460,7 +473,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_RECENT_ARTICLE_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response = parseRecentArticles(conn);
@@ -477,8 +490,9 @@ public class CafeDAO {
 
 	/**
 	 * GetRecentArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the recent articles as xml
 	 */
 	public String getRecentArticlesAsXML(String queryString) {
@@ -490,7 +504,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_RECENT_ARTICLE_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response.append(util.changeToString(conn.getInputStream()));
@@ -507,8 +521,9 @@ public class CafeDAO {
 
 	/**
 	 * GetRecentArticles DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the recent articles as json
 	 */
 	public String getRecentArticlesAsJSON(String queryString) {
@@ -521,7 +536,7 @@ public class CafeDAO {
 			url.append(queryString);
 
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				String XMLQuery = util.changeToString(conn.getInputStream());
@@ -540,8 +555,9 @@ public class CafeDAO {
 
 	/**
 	 * WriteArticle DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the cafe write res
 	 */
 	public CafeWriteRes writeArticle(String queryString) {
@@ -553,7 +569,7 @@ public class CafeDAO {
 			url.append(APIUtils._CAFE_WRITE_ARTICLE_URL);
 			url.append(queryString);
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response = parseWriteArticle(conn);
@@ -570,8 +586,9 @@ public class CafeDAO {
 
 	/**
 	 * WriteArticle DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the string
 	 */
 	public String writeArticleAsXML(String queryString) {
@@ -584,7 +601,7 @@ public class CafeDAO {
 			url.append(queryString);
 
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				response.append(util.changeToString(conn.getInputStream()));
@@ -602,8 +619,9 @@ public class CafeDAO {
 
 	/**
 	 * WriteArticle DAO.
-	 *
-	 * @param queryString the query string
+	 * 
+	 * @param queryString
+	 *            the query string
 	 * @return the string
 	 */
 	public String writeArticleAsJSON(String queryString) {
@@ -616,7 +634,7 @@ public class CafeDAO {
 			url.append(queryString);
 
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
-			if ( null == conn ) {
+			if (null == conn) {
 				response = null;
 			} else {
 				String XMLQuery = util.changeToString(conn.getInputStream());
@@ -635,10 +653,12 @@ public class CafeDAO {
 
 	/**
 	 * Board article parser.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the cafe board article
 	 */
+	@SuppressWarnings("unchecked")
 	private CafeBoardArticles parseBoardArticle(HttpURLConnection conn) {
 		CafeBoardArticles response = new CafeBoardArticles();
 		SAXBuilder builder = new SAXBuilder();
@@ -650,23 +670,34 @@ public class CafeDAO {
 			root = doc.getRootElement();
 			if (util.isAPIError(root) == true)
 				return null;
-			else {
+			else if (!util.isValidElement(root)) {
+				return null;
+			} else {
 				response.setTotalSize(Integer.parseInt(root.getAttributeValue("totalSize")));
 				response.setTotalNewSize(Integer.parseInt(root.getAttributeValue("totalNewSize")));
-				@SuppressWarnings("unchecked")
 				List<Element> childList = root.getChildren("article");
 
-				for (Element em : childList) {
-					CafeBoardArticle temparticle = new CafeBoardArticle();
-					temparticle.setBoardId(em.getChild("boardId").getValue());
-					temparticle.setName(em.getChild("name").getValue());
-					temparticle.setArticleId(Integer.parseInt(em.getChild("articleId").getValue()));
-					temparticle.setUserName(em.getChild("userName").getValue());
-					temparticle.setCommentCount(Integer.parseInt(em.getChild("commentCount").getValue()));
-					temparticle.setRegDateTime(em.getChild("regDateTime").getValue());
-					temparticle.setViewCount(Integer.parseInt(em.getChild("viewCount").getValue()));
-					temparticle.setHidden(Boolean.parseBoolean(em.getChild("hidden").getValue()));
-					response.getArticles().add(temparticle);
+				if (util.isValidElement(childList)) {
+					for (Element em : childList) {
+						CafeBoardArticle temparticle = new CafeBoardArticle();
+						if (util.isValidElement(em.getChild("boardId")))
+							temparticle.setBoardId(em.getChild("boardId").getValue());
+						if (util.isValidElement(em.getChild("name")))
+							temparticle.setName(em.getChild("name").getValue());
+						if (util.isValidElement(em.getChild("articleId")))
+							temparticle.setArticleId(Integer.parseInt(em.getChild("articleId").getValue()));
+						if (util.isValidElement(em.getChild("userName")))
+							temparticle.setUserName(em.getChild("userName").getValue());
+						if (util.isValidElement(em.getChild("commentCount")))
+							temparticle.setCommentCount(Integer.parseInt(em.getChild("commentCount").getValue()));
+						if (util.isValidElement(em.getChild("regDateTime")))
+							temparticle.setRegDateTime(em.getChild("regDateTime").getValue());
+						if (util.isValidElement(em.getChild("viewCount")))
+							temparticle.setViewCount(Integer.parseInt(em.getChild("viewCount").getValue()));
+						if (util.isValidElement(em.getChild("hidden")))
+							temparticle.setHidden(Boolean.parseBoolean(em.getChild("hidden").getValue()));
+						response.getArticles().add(temparticle);
+					}
 				}
 			}
 		} catch (JDOMException e) {
@@ -679,10 +710,12 @@ public class CafeDAO {
 
 	/**
 	 * Parses the alarm res.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the cafe alarm res
 	 */
+	@SuppressWarnings("unchecked")
 	private CafeAlarmRes parseAlarmRes(HttpURLConnection conn) {
 		CafeAlarmRes response = new CafeAlarmRes();
 		SAXBuilder builder = new SAXBuilder();
@@ -697,27 +730,37 @@ public class CafeDAO {
 
 			Element alimiBbs = root.getChild("alimiBbs");
 			Element alimiUser = root.getChild("alimiUser");
-			@SuppressWarnings("unchecked")
+
 			List<Element> bbsList = alimiBbs.getChildren("item");
-			@SuppressWarnings("unchecked")
 			List<Element> userList = alimiUser.getChildren("item");
 
 			for (Element em : bbsList) {
 				CafeActivityRes tempActivity = new CafeActivityRes();
-				tempActivity.setCafeName(em.getChild("cafeName").getValue());
-				tempActivity.setCafeCode(em.getChild("cafeCode").getValue());
-				tempActivity.setAlimType(em.getChild("alimType").getValue());
-				tempActivity.setBoardId(em.getChild("boardId").getValue());
-				tempActivity.setArticleId(Integer.parseInt(em.getChild("articleId").getValue()));
-				tempActivity.setArticleTitle(em.getChild("articleTitle").getValue());
+				if (util.isValidElement(em.getChild("cafeName")))
+					tempActivity.setCafeName(em.getChild("cafeName").getValue());
+				if (util.isValidElement(em.getChild("cafeCode")))
+					tempActivity.setCafeCode(em.getChild("cafeCode").getValue());
+				if (util.isValidElement(em.getChild("alimType")))
+					tempActivity.setAlimType(em.getChild("alimType").getValue());
+				if (util.isValidElement(em.getChild("boardId")))
+					tempActivity.setBoardId(em.getChild("boardId").getValue());
+				if (util.isValidElement(em.getChild("articleId")))
+					tempActivity.setArticleId(Integer.parseInt(em.getChild("articleId").getValue()));
+				if (util.isValidElement(em.getChild("articleTitle")))
+					tempActivity.setArticleTitle(em.getChild("articleTitle").getValue());
 				response.setCafeActiveRes(tempActivity);
 			}
+
 			for (Element em : userList) {
 				CafeLevelInfo tempLevelInfo = new CafeLevelInfo();
-				tempLevelInfo.setCafeName(em.getChild("cafeName").getValue());
-				tempLevelInfo.setCafeCode(em.getChild("cafeCode").getValue());
-				tempLevelInfo.setAlimType(em.getChild("alimType").getValue());
-				tempLevelInfo.setAlimDesc(em.getChild("alimDesc").getValue());
+				if (util.isValidElement(em.getChild("cafeName")))
+					tempLevelInfo.setCafeName(em.getChild("cafeName").getValue());
+				if (util.isValidElement(em.getChild("cafeCode")))
+					tempLevelInfo.setCafeCode(em.getChild("cafeCode").getValue());
+				if (util.isValidElement(em.getChild("alimType")))
+					tempLevelInfo.setAlimType(em.getChild("alimType").getValue());
+				if (util.isValidElement(em.getChild("alimDesc")))
+					tempLevelInfo.setAlimDesc(em.getChild("alimDesc").getValue());
 				response.setCafeLevelInfo(tempLevelInfo);
 			}
 		} catch (JDOMException e) {
@@ -730,8 +773,9 @@ public class CafeDAO {
 
 	/**
 	 * Parses the boards.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the list
 	 */
 	private List<CafeBoard> parseBoards(HttpURLConnection conn) {
@@ -750,12 +794,18 @@ public class CafeDAO {
 			List<Element> boardList = root.getChildren("board");
 			for (Element em : boardList) {
 				CafeBoard tempBoard = new CafeBoard();
-				tempBoard.setBoardId(em.getAttributeValue("boardId"));
-				tempBoard.setName(em.getChild("name").getValue());
-				tempBoard.setHasNewChild(Boolean.parseBoolean(em.getChild("hasNew").getValue()));
-				tempBoard.setBoardType(em.getChild("boardType").getValue());
-				tempBoard.setDisplay(Boolean.parseBoolean(em.getChild("display").getValue()));
-				tempBoard.setAnonymous(Boolean.parseBoolean(em.getChild("anonymous").getValue()));
+				if (util.isValidElement(em.getChild("boardId")))
+					tempBoard.setBoardId(em.getAttributeValue("boardId"));
+				if (util.isValidElement(em.getChild("name")))
+					tempBoard.setName(em.getChild("name").getValue());
+				if (util.isValidElement(em.getChild("hasNew")))
+					tempBoard.setHasNewChild(Boolean.parseBoolean(em.getChild("hasNew").getValue()));
+				if (util.isValidElement(em.getChild("boardType")))
+					tempBoard.setBoardType(em.getChild("boardType").getValue());
+				if (util.isValidElement(em.getChild("display")))
+					tempBoard.setDisplay(Boolean.parseBoolean(em.getChild("display").getValue()));
+				if (util.isValidElement(em.getChild("anonymous")))
+					tempBoard.setAnonymous(Boolean.parseBoolean(em.getChild("anonymous").getValue()));
 
 				response.add(tempBoard);
 			}
@@ -769,8 +819,9 @@ public class CafeDAO {
 
 	/**
 	 * Parses the favor cafe.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the list
 	 */
 	private List<CafeFavor> parseFavorCafe(HttpURLConnection conn) {
@@ -789,8 +840,14 @@ public class CafeDAO {
 				List<Element> favoriteList = root.getChildren("board");
 
 				for (Element em : favoriteList) {
-					CafeFavor tempFavorite = new CafeFavor(em.getChild("cafeCode").getValue(), em.getChild("name").getValue(), Boolean.parseBoolean(em
-							.getChild("updated").getValue()));
+					CafeFavor tempFavorite = new CafeFavor();
+					if (util.isValidElement(em.getChild("cafeCode")))
+						tempFavorite.setCafeCode(em.getChild("cafeCode").getValue());
+					if (util.isValidElement(em.getChild("name")))
+						tempFavorite.setName(em.getChild("name").getValue());
+					if (util.isValidElement(em.getChild("updated")))
+						tempFavorite.setUpdated(Boolean.parseBoolean(em.getChild("updated").getValue()));
+
 					response.add(tempFavorite);
 				}
 			}
@@ -804,8 +861,9 @@ public class CafeDAO {
 
 	/**
 	 * Parses the recent articles.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the cafe recent articles
 	 */
 	private CafeRecentArticles parseRecentArticles(HttpURLConnection conn) {
@@ -828,16 +886,25 @@ public class CafeDAO {
 
 			for (Element em : recentList) {
 				CafeRecentArticle tempArticle = new CafeRecentArticle();
-				tempArticle.setBoardName(em.getChild("boardName").getValue());
-				tempArticle.setBoardId(em.getChild("boardId").getValue());
+				if (util.isValidElement(em.getChild("boardName")))
+					tempArticle.setBoardName(em.getChild("boardName").getValue());
+				if (util.isValidElement(em.getChild("boardId")))
+					tempArticle.setBoardId(em.getChild("boardId").getValue());
 
-				tempArticle.setName(em.getChild("name").getValue());
-				tempArticle.setArticleId(Integer.parseInt(em.getChild("articleId").getValue()));
-				tempArticle.setUserName(em.getChild("userName").getValue());
-				tempArticle.setCommentCount(Integer.parseInt(em.getChild("commentCount").getValue()));
-				tempArticle.setRegDateTime(em.getChild("regDateTime").getValue());
-				tempArticle.setViewCount(Integer.parseInt(em.getChild("viewCount").getValue()));
-				tempArticle.setHidden(Boolean.parseBoolean(em.getChild("hidden").getValue()));
+				if (util.isValidElement(em.getChild("name")))
+					tempArticle.setName(em.getChild("name").getValue());
+				if (util.isValidElement(em.getChild("articleId")))
+					tempArticle.setArticleId(Integer.parseInt(em.getChild("articleId").getValue()));
+				if (util.isValidElement(em.getChild("userName")))
+					tempArticle.setUserName(em.getChild("userName").getValue());
+				if (util.isValidElement(em.getChild("commentCount")))
+					tempArticle.setCommentCount(Integer.parseInt(em.getChild("commentCount").getValue()));
+				if (util.isValidElement(em.getChild("regDateTime")))
+					tempArticle.setRegDateTime(em.getChild("regDateTime").getValue());
+				if (util.isValidElement(em.getChild("viewCount")))
+					tempArticle.setViewCount(Integer.parseInt(em.getChild("viewCount").getValue()));
+				if (util.isValidElement(em.getChild("hidden")))
+					tempArticle.setHidden(Boolean.parseBoolean(em.getChild("hidden").getValue()));
 
 				response.setRecentArticle(tempArticle);
 			}
@@ -852,8 +919,9 @@ public class CafeDAO {
 
 	/**
 	 * Parses the write article.
-	 *
-	 * @param conn the conn
+	 * 
+	 * @param conn
+	 *            the conn
 	 * @return the cafe write res
 	 */
 	private CafeWriteRes parseWriteArticle(HttpURLConnection conn) {
@@ -868,15 +936,23 @@ public class CafeDAO {
 			if (util.isAPIError(root) == true)
 				return null;
 
-			response.setProfileImg(root.getChild("profileImg").getValue());
+			if (util.isValidElement(root.getChild("profileImg")))
+				response.setProfileImg(root.getChild("profileImg").getValue());
 
-			response.setName(root.getChild("name").getValue());
-			response.setArticleId(Integer.parseInt(root.getChild("articleId").getValue()));
-			response.setUserName(root.getChild("userName").getValue());
-			response.setCommentCount(Integer.parseInt(root.getChild("commentCount").getValue()));
-			response.setRegDateTime(root.getChild("regDateTime").getValue());
-			response.setViewCount(Integer.parseInt(root.getChild("viewCount").getValue()));
-			response.setHidden(Boolean.parseBoolean(root.getChild("hidden").getValue()));
+			if (util.isValidElement(root.getChild("name")))
+				response.setName(root.getChild("name").getValue());
+			if (util.isValidElement(root.getChild("articleId")))
+				response.setArticleId(Integer.parseInt(root.getChild("articleId").getValue()));
+			if (util.isValidElement(root.getChild("userName")))
+				response.setUserName(root.getChild("userName").getValue());
+			if (util.isValidElement(root.getChild("commentCount")))
+				response.setCommentCount(Integer.parseInt(root.getChild("commentCount").getValue()));
+			if (util.isValidElement(root.getChild("regDateTime")))
+				response.setRegDateTime(root.getChild("regDateTime").getValue());
+			if (util.isValidElement(root.getChild("viewCount")))
+				response.setViewCount(Integer.parseInt(root.getChild("viewCount").getValue()));
+			if (util.isValidElement(root.getChild("hidden")))
+				response.setHidden(Boolean.parseBoolean(root.getChild("hidden").getValue()));
 
 		} catch (JDOMException e) {
 			e.printStackTrace();
