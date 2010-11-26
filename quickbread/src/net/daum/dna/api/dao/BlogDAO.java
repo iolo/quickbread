@@ -1061,29 +1061,48 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				articles = null;
 			} else {
-				articles.setStatus(Integer.parseInt(root.getChildText("status")));
-				articles.setTotalCount(Integer.parseInt(root.getChildText("totalCount")));
-				articles.setMaxNo(Integer.parseInt(root.getChildText("maxNo")));
-				articles.setMinNo(Integer.parseInt(root.getChildText("minNo")));
-				articles.setMaxDate(root.getChildText("maxDate"));
-				articles.setMinDate(root.getChildText("minDate"));
-
-				List<Element> items = root.getChildren("item");
-				for (Element em : items) {
-					BlogArticlesItem item = new BlogArticlesItem();
-					item.setPostId(Integer.parseInt(em.getChildText("postId")));
-					item.setNickname(em.getChildText("nickname"));
-					item.setTitle(em.getChildText("title"));
-					item.setDate(em.getChildText("date"));
-					item.setOpen(em.getChildText("open"));
-					item.setUrl(em.getChildText("url"));
-					item.setViewCategoryId(em.getChildText("viewCategoryId"));
-					item.setViewId(em.getChildText("viewId"));
-					item.setIsScrap(em.getChildText("isScrap"));
-					item.setComments(Integer.parseInt(em.getChildText("comments")));
-					item.setTrackbacks(em.getChildText("trackbacks"));
-					articles.addArticle(item);
-				}
+				if( util.isValidElement( root.getChild("status") ) )
+					articles.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("totalCount") ) )
+					articles.setTotalCount(Integer.parseInt(root.getChildText("totalCount")));
+				if( util.isValidElement( root.getChild("maxNo") ) )
+					articles.setMaxNo(Integer.parseInt(root.getChildText("maxNo")));
+				if( util.isValidElement( root.getChild("minNo") ) )
+					articles.setMinNo(Integer.parseInt(root.getChildText("minNo")));
+				if( util.isValidElement( root.getChild("maxDate") ) )
+					articles.setMaxDate(root.getChildText("maxDate"));
+				if( util.isValidElement( root.getChild("minDate") ) )
+					articles.setMinDate(root.getChildText("minDate"));
+				
+				if( util.isValidElement( root.getChildren("item") ) ) {
+					List<Element> items = root.getChildren("item");
+					
+					for (Element em : items) {
+						BlogArticlesItem item = new BlogArticlesItem();
+						
+						if( util.isValidElement( root.getChild("postId") ) )
+							item.setPostId(Integer.parseInt(em.getChildText("postId")));
+						if( util.isValidElement( root.getChild("nickname") ) )
+							item.setNickname(em.getChildText("nickname"));
+						if( util.isValidElement( root.getChild("title") ) )
+							item.setTitle(em.getChildText("title"));
+						if( util.isValidElement( root.getChild("date") ) )
+							item.setDate(em.getChildText("date"));
+						if( util.isValidElement( root.getChild("open") ) )
+							item.setOpen(em.getChildText("open"));
+						if( util.isValidElement( root.getChild("url") ) )
+							item.setUrl(em.getChildText("url"));
+						if( util.isValidElement( root.getChild("viewCategoryId") ) )
+							item.setViewCategoryId(em.getChildText("viewCategoryId"));
+						if( util.isValidElement( root.getChild("isScrap") ) )
+							item.setIsScrap(em.getChildText("isScrap"));
+						if( util.isValidElement( root.getChild("comments") ) )
+							item.setComments(Integer.parseInt(em.getChildText("comments")));
+						if( util.isValidElement( root.getChild("trackbacks") ) )
+							item.setTrackbacks(em.getChildText("trackbacks"));
+						articles.addArticle(item);			
+					}
+				}					
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -1113,9 +1132,13 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				writeRes = null;
 			} else {
-				writeRes.setStatus(Integer.parseInt(root.getChildText("status")));
-				writeRes.setPostId(Integer.parseInt(root.getChildText("postId")));
-				writeRes.setUrl(root.getChildText("url"));
+				
+				if( util.isValidElement( root.getChild("status") ) )
+					writeRes.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("postId") ) )
+					writeRes.setPostId(Integer.parseInt(root.getChildText("postId")));
+				if( util.isValidElement( root.getChild("url") ) )
+					writeRes.setUrl(root.getChildText("url"));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -1148,9 +1171,12 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				modifyRes = null;
 			} else {
-				modifyRes.setStatus(Integer.parseInt(root.getChildText("status")));
-				modifyRes.setPostId(Integer.parseInt(root.getChildText("postId")));
-				modifyRes.setUrl(root.getChildText("url"));
+				if( util.isValidElement( root.getChild("status") ) )
+					modifyRes.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("postId") ) )
+					modifyRes.setPostId(Integer.parseInt(root.getChildText("postId")));
+				if( util.isValidElement( root.getChild("url") ) )
+					modifyRes.setUrl( root.getChildText("url") );
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -1184,34 +1210,59 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				article = null;
 			} else {
-				article.setStatus(Integer.parseInt(root.getChildText("status")));
-				article.setPostId(Integer.parseInt(root.getChildText("postId")));
-				article.setUrl(root.getChildText("url"));
-				article.setTitle(root.getChildText("title"));
-				article.setContent(root.getChildText("content"));
-				article.setNickname(root.getChildText("nickname"));
-				article.setComments(Integer.parseInt(root.getChildText("comments")));
-				article.setTrackbacks(root.getChildText("trackbacks"));
-				article.setTag(root.getChildText("tag"));
-				article.setDate(root.getChildText("date"));
-				article.setCategoryId(root.getChildText("categoryId"));
-				article.setCategoryName(root.getChildText("categoryName"));
-				article.setScrapPrmtKind(root.getChildText("scrapPrmtKind"));
-				article.setSearchPrmt(root.getChildText("searchPrmt"));
-				article.setOpen(root.getChildText("open"));
-
-				List<Element> items = root.getChild("images").getChildren("item");
-				for (Element em : items) {
-					article.getImageUrls().add(em.getChildText("url"));
+				
+				if( util.isValidElement( root.getChild("status") ) ) 
+					article.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("postId") ) )
+					article.setPostId(Integer.parseInt(root.getChildText("postId")));
+				if( util.isValidElement( root.getChild("url") ) ) 
+					article.setUrl(root.getChildText("url"));
+				if( util.isValidElement( root.getChild("title") ) ) 
+					article.setTitle(root.getChildText("title"));
+				if( util.isValidElement( root.getChild("content") ) ) 
+					article.setContent(root.getChildText("content"));
+				if( util.isValidElement( root.getChild("nickname") ) ) 
+					article.setNickname(root.getChildText("nickname") );
+				if( util.isValidElement( root.getChild("comments") ) ) 
+					article.setComments(Integer.parseInt(root.getChildText("comments")));
+				if( util.isValidElement( root.getChild("trackbacks") ) ) 
+					article.setTrackbacks(root.getChildText("trackbacks"));
+				if( util.isValidElement( root.getChild("tag") ) ) 
+					article.setTag(root.getChildText("tag"));
+				if( util.isValidElement( root.getChild("date") ) ) 
+					article.setDate(root.getChildText("date"));
+				if( util.isValidElement( root.getChild("categoryId") ) ) 
+					article.setCategoryId(root.getChildText("categoryId"));
+				if( util.isValidElement( root.getChild("categoryName") ) ) 
+					article.setCategoryName(root.getChildText("categoryName"));
+				if( util.isValidElement( root.getChild("scrapPrmtKind") ) ) 
+					article.setScrapPrmtKind(root.getChildText("scrapPrmtKind"));
+				if( util.isValidElement( root.getChild("searchPrmt") ) ) 
+					article.setSearchPrmt(root.getChildText("searchPrmt"));
+				if( util.isValidElement( root.getChild("open") ) )
+					article.setOpen(root.getChildText("open"));
+				
+				if( util.isValidElement( root.getChild("images").getChildren("item") ) ) {
+					List<Element> items = root.getChild("images").getChildren("item");
+					for (Element em : items) {
+						if ( util.isValidElement( em.getChild("url") ) )
+							article.getImageUrls().add(em.getChildText("url"));
+					}
 				}
-				if (root.getChild("previousPost") != null) {
-					preArticle.setId(root.getChild("previousPost").getChildText("id"));
-					preArticle.setTitle(root.getChild("previousPost").getChildText("title"));
+				
+				if( util.isValidElement( root.getChild("previousPost") ) ) {
+					if( util.isValidElement( root.getChild("previousPost").getChild("id") ) )
+						preArticle.setId(root.getChild("previousPost").getChildText("id"));
+					if( util.isValidElement( root.getChild("previousPost").getChild("id") ) )
+						preArticle.setTitle(root.getChild("previousPost").getChildText("id") );
 					article.setpreArticle(preArticle);
-				}
-				if (root.getChild("nextPost") != null) {
-					nextArticle.setId(root.getChild("nextPost").getChildText("id"));
-					nextArticle.setTitle(root.getChild("nextPost").getChildText("title"));
+				}						
+
+				if( util.isValidElement( root.getChild("nextPost") ) ) {
+					if( util.isValidElement( root.getChild("nextPost").getChild("id") ) )
+						nextArticle.setId(root.getChild("nextPost").getChildText("id") );
+					if( util.isValidElement(root.getChild("nextPost").getChild("title") ) )
+						nextArticle.setTitle(root.getChild("nextPost").getChildText("title") );
 					article.setNextArticle(nextArticle);
 				}
 			}
@@ -1247,14 +1298,20 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				categories = null;
 			} else {
-				categories.setStatus(Integer.parseInt(root.getChildText("status")));
-				List<Element> items = root.getChild("items").getChildren("item");
-				for (Element em : items) {
-					BlogCategory item = new BlogCategory();
-					item.setCategoryId(Integer.parseInt(em.getChildText("categoryId")));
-					item.setOpen(em.getChildText("open"));
-					item.setName(em.getChildText("name"));
-					categories.addCategory(item);
+				if( util.isValidElement( root.getChild("status") ) )
+					categories.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("items").getChildren("item") ) ) {
+					List<Element> items = root.getChild("items").getChildren("item");
+					for (Element em : items) {
+						BlogCategory item = new BlogCategory();
+						if( util.isValidElement( em.getChild("categoryId") ) )
+							item.setCategoryId(Integer.parseInt(em.getChildText("categoryId")));
+						if( util.isValidElement(  em.getChild("open") ) )
+							item.setOpen(em.getChildText("open"));
+						if( util.isValidElement(  em.getChild("name") ) )
+							item.setName(em.getChildText("name"));
+						categories.addCategory(item);
+					}
 				}
 			}
 		} catch (JDOMException e) {
@@ -1286,21 +1343,29 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				comments = null;
 			} else {
-				comments.setStatus(Integer.parseInt(root.getChildText("status")));
-				comments.setTotalCount(Integer.parseInt(root.getChildText("totalCount")));
-				List<Element> items = root.getChildren("item");
-
-				for (Element em : items) {
-					BlogComment item = new BlogComment();
-					item.setCommentId(em.getChildText("commentId"));
-					if (null != em.getChild("parentId")) {
-						item.setParentId(em.getChildText("parentId"));
+				if( util.isValidElement( root.getChild("status") ) )
+					comments.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("totalCount") ) )
+					comments.setTotalCount(Integer.parseInt(root.getChildText("totalCount")));
+				if( util.isValidElement(  root.getChildren("item") ) ) {
+					List<Element> items = root.getChildren("item");
+	
+					for (Element em : items) {
+						BlogComment item = new BlogComment();
+						if( util.isValidElement( em.getChild("commentId") ) )
+							item.setCommentId(em.getChildText("commentId"));
+						if( util.isValidElement( em.getChild("parentId") ) )
+							item.setParentId(em.getChildText("parentId"));
+						if( util.isValidElement( em.getChild("name") ) )								
+							item.setName(em.getChildText("name"));
+						if( util.isValidElement( em.getChild("content") ) )
+							item.setContent(em.getChildText("content"));
+						if( util.isValidElement( em.getChild("url") ) )
+							item.setUrl(em.getChildText("url"));
+						if( util.isValidElement( em.getChild("date") ) )
+							item.setDate(em.getChildText("date"));
+						comments.addComment(item);
 					}
-					item.setName(em.getChildText("name"));
-					item.setContent(em.getChildText("content"));
-					item.setUrl(em.getChildText("url"));
-					item.setDate(em.getChildText("date"));
-					comments.addComment(item);
 				}
 			}
 		} catch (JDOMException e) {
@@ -1330,6 +1395,7 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				commentRes = null;
 			} else {
+				if( util.isValidElement( root.getChild("status") ) )
 				commentRes.setStatus(Integer.parseInt(root.getChildText("status")));
 			}
 		} catch (JDOMException e) {
@@ -1361,18 +1427,26 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				rsses = null;
 			} else {
-				rsses.setStatus(Integer.parseInt(root.getChildText("status")));
-				List<Element> items = root.getChild("items").getChildren("item");
-
-				for (Element em : items) {
-					BlogRSS item = new BlogRSS();
-					item.setTitle(em.getChildText("title"));
-					item.setContent(em.getChildText("content"));
-					item.setLink(em.getChildText("link"));
-					item.setPubDate(em.getChildText("pubDate"));
-					item.setAuthor(em.getChildText("author"));
-					item.setEnclosure(em.getChildText("enclosure"));
-					rsses.addRss(item);
+				if( util.isValidElement( root.getChild("status") ) )
+					rsses.setStatus(Integer.parseInt(root.getChildText("status") ) );
+				if( util.isValidElement( root.getChild("items").getChildren("item") ) ) {
+					List<Element> items = root.getChild("items").getChildren("item");
+					for (Element em : items) {
+						BlogRSS item = new BlogRSS();
+						if( util.isValidElement( em.getChild("title") ) )
+							item.setTitle(em.getChildText("title"));
+						if( util.isValidElement( em.getChild("content") ) )
+							item.setContent(em.getChildText("content"));
+						if( util.isValidElement( em.getChild("link") ) )
+							item.setLink(em.getChildText("link"));
+						if( util.isValidElement( em.getChild("pubDate") ) )
+							item.setPubDate(em.getChildText("pubDate"));
+						if( util.isValidElement( em.getChild("author") ) )
+							item.setAuthor(em.getChildText("author"));
+						if( util.isValidElement( em.getChild("enclosure") ) )
+							item.setEnclosure(em.getChildText("enclosure"));
+						rsses.addRss(item);
+					}
 				}
 			}
 		} catch (JDOMException e) {
@@ -1404,19 +1478,32 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				info = null;
 			} else {
-				info.setId(root.getChildText("id"));
-				info.setName(root.getChildText("name"));
-				info.setNickname(root.getChildText("nickname"));
-				info.setTitle(root.getChildText("title"));
-				info.setDescription(root.getChildText("description"));
-				info.setUrl(root.getChildText("url"));
-				info.setRssUrl(root.getChildText("rssUrl"));
-				info.setMyconImageUrl(root.getChildText("myconImageUrl"));
-				info.setProfileThumbnailImageUrl(root.getChildText("profileThumbnailImageUrl"));
-				info.setProfileImageUrl(root.getChildText("profileImageUrl"));
-				info.setIsNewGuestbookExists(root.getChildText("isNewGuestbookExists") == "Y" ? true : false);
-				info.setVisitorCount(Integer.parseInt(root.getChildText("visitorCount")));
-				info.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("id") ) )
+					info.setId(root.getChildText("id"));
+				if( util.isValidElement( root.getChild("name") ) )
+					info.setName(root.getChildText("name"));
+				if( util.isValidElement( root.getChild("nickname") ) )
+					info.setNickname(root.getChildText("nickname"));
+				if( util.isValidElement( root.getChild("title") ) )
+					info.setTitle(root.getChildText("title"));
+				if( util.isValidElement( root.getChild("description") ) )
+					info.setDescription(root.getChildText("description"));
+				if( util.isValidElement( root.getChild("url") ) )
+					info.setUrl(root.getChildText("url"));
+				if( util.isValidElement( root.getChild("rssUrl") ) )
+					info.setRssUrl(root.getChildText("rssUrl"));
+				if( util.isValidElement( root.getChild("myconImageUrl") ) )
+					info.setMyconImageUrl(root.getChildText("myconImageUrl"));
+				if( util.isValidElement( root.getChild("profileThumbnailImageUrl") ) )
+					info.setProfileThumbnailImageUrl(root.getChildText("profileThumbnailImageUrl"));
+				if( util.isValidElement( root.getChild("profileImageUrl") ) )
+					info.setProfileImageUrl(root.getChildText("profileImageUrl"));
+				if( util.isValidElement( root.getChild("isNewGuestbookExists") ) )
+					info.setIsNewGuestbookExists(root.getChildText("isNewGuestbookExists") == "Y" ? true : false);
+				if( util.isValidElement( root.getChild("visitorCount") ) )
+					info.setVisitorCount(Integer.parseInt(root.getChildText("visitorCount")));
+				if( util.isValidElement( root.getChild("status") ) )
+					info.setStatus(Integer.parseInt(root.getChildText("status")));
 			}
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -1449,18 +1536,27 @@ public class BlogDAO {
 			if (util.isAPIError(root)) {
 				activities = null;
 			} else {
-				activities.setStatus(Integer.parseInt(root.getChildText("status")));
-				List<Element> items = root.getChild("items").getChildren("item");
+				if( util.isValidElement( root.getChild("status") ) )
+					activities.setStatus(Integer.parseInt(root.getChildText("status")));
+				if( util.isValidElement( root.getChild("items").getChildren("item") ) ) {
+					List<Element> items = root.getChild("items").getChildren("item");
 
-				for (Element em : items) {
-					BlogActivityRes item = new BlogActivityRes();
-					item.setTitle(em.getChildText("title"));
-					item.setPostId(em.getChildText("postId"));
-					item.setPubDate(em.getChildText("pubDate"));
-					item.setDescription(em.getChildText("description"));
-					item.setAuthor(em.getChildText("author"));
-					item.setType(em.getChildText("type"));
-					activities.addActivity(item);
+					for (Element em : items) {
+						BlogActivityRes item = new BlogActivityRes();
+						if( util.isValidElement( em.getChild("title") ) )						
+							item.setTitle(em.getChildText("title"));
+						if( util.isValidElement( em.getChild("postId") ) )
+							item.setPostId(em.getChildText("postId"));
+						if( util.isValidElement( em.getChild("pubDate") ) )
+							item.setPubDate(em.getChildText("pubDate"));
+						if( util.isValidElement( em.getChild("description") ) )
+							item.setDescription(em.getChildText("description"));
+						if( util.isValidElement( em.getChild("author") ) )
+							item.setAuthor(em.getChildText("author"));
+						if( util.isValidElement( em.getChild("type") ) )
+							item.setType(em.getChildText("type"));
+						activities.addActivity(item);
+					}
 				}
 			}
 		} catch (JDOMException e) {
