@@ -794,7 +794,6 @@ public class CafeDAO {
 			List<Element> boardList = root.getChildren("board");
 			for (Element em : boardList) {
 				CafeBoard tempBoard = new CafeBoard();
-				if (util.isValidElement(em.getChild("boardId")))
 					tempBoard.setBoardId(em.getAttributeValue("boardId"));
 				if (util.isValidElement(em.getChild("name")))
 					tempBoard.setName(em.getChild("name").getValue());
