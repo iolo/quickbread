@@ -521,7 +521,7 @@ public class YozmDAO {
 		StringBuffer response = new StringBuffer();
 		StringBuffer url = new StringBuffer();
 
-		url.append(APIUtils._YOZM_WRITE_MESSAGE_URL);
+		url.append(APIUtils._YOZM_ARTICLE_LIST_URL);
 		url.append(queryString);
 		try {
 			conn = util.getHttpURLConnection(url.toString(), APIUtils._HTTP_REQUEST_GET, this.oauth);
