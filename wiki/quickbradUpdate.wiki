@@ -7,9 +7,9 @@ quickbread-1.2b
 
 = Details =
 
-- url 수정
+==- url 수정==
 public String articlesListAsJSON(String queryString) 함수에서 
 url.append(APIUtils._YOZM_WRITE_MESSAGE_URL) -> *url.append(APIUtils._YOZM_ARTICLE_LIST_URL)*
 
-- 함수명 수정
+==- 함수명 수정==
 String getArticlesXML(Params option) - > * String getArticlesAsXML(Params option) *
