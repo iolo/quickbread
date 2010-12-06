@@ -339,7 +339,7 @@ public class DefaultYozmAPI implements YozmAPI {
 	 * net.daum.dna.api.YozmAPI#articlesListAsXML(net.daum.dna.params.Params)
 	 */
 	@Override
-	public String getArticlesXML(Params option) {
+	public String getArticlesAsXML(Params option) {
 		return service.articlesListAsXML(option);
 	}
 

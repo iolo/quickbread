@@ -290,7 +290,7 @@ public interface YozmAPI {
 	 *            
 	 * @return 글 목록을 XML String 형태로 반환.
 	 */
-	public String getArticlesXML(Params option);
+	public String getArticlesAsXML(Params option);
 
 	/**
 	 * 모든 글 List 를 가지고 온다.
