@@ -1085,19 +1085,21 @@ public class YozmDAO {
 		List<YozmUserArticles> response = new ArrayList<YozmUserArticles>();
 
 		try {
+			System.out.println(util.changeToString(conn.getInputStream()));
 			doc = builder.build(conn.getInputStream());
 			root = doc.getRootElement();
 			if (util.isAPIError(root) == true)
 				return null;
 
-			List<Element> childList = root.getChildren("message");
+			List<Element> msgList = root.getChild("msg_list").getChildren("message");
 
-			if (util.isValidElement(childList)) {
-				for (Element em : childList) {
+			if (util.isValidElement(msgList)) {
+				for (Element em : msgList) {
 					YozmUserArticles tempArticles = new YozmUserArticles();
 
 					if (util.isValidElement(em))
 						tempArticles.setWriteArticle(parseArticle(em));
+					
 					if (util.isValidElement(em.getChild("user")))
 						tempArticles.setArticleUserInfo(parseInfo(em.getChild("user")));
 
