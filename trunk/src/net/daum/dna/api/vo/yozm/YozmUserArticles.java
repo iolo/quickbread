@@ -3,7 +3,7 @@ package net.daum.dna.api.vo.yozm;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YozmUserArticlesSet {
+public class YozmUserArticles {
 	
 	/** The articles. */
 	private List<YozmUserArticleSet> userArticles;
@@ -11,7 +11,7 @@ public class YozmUserArticlesSet {
 	/** The has more. */
 	private boolean hasMore;
 	
-	public YozmUserArticlesSet () {
+	public YozmUserArticles () {
 		userArticles = new ArrayList<YozmUserArticleSet>();
 	}
 
