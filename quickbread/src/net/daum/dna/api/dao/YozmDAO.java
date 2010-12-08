@@ -952,7 +952,7 @@ public class YozmDAO {
 
 				if (util.isValidElement(em))
 					articles.setWriteArticle(parseArticle(em));
-
+			
 				if (util.isValidElement(em.getChild("parent_msg")))
 					articles.setParentArticle(parseArticle(em.getChild("parent_msg")));
 

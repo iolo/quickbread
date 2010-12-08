@@ -140,7 +140,9 @@ public class APIUtils {
 
 	public boolean isValidElement(Element em) {
 		
-		if( null == em || 0 == em.getContentSize())
+		if(null == em || 0 == em.getContentSize())
+			return false;
+		else if( null == em.getValue())
 			return false;
 		
 		return true;
