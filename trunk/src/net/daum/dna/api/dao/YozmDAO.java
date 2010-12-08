@@ -8,7 +8,7 @@ import net.daum.dna.api.vo.yozm.YozmArticle;
 import net.daum.dna.api.vo.yozm.YozmArticleSet;
 import net.daum.dna.api.vo.yozm.YozmArticles;
 import net.daum.dna.api.vo.yozm.YozmUserArticleSet;
-import net.daum.dna.api.vo.yozm.YozmUserArticlesSet;
+import net.daum.dna.api.vo.yozm.YozmUserArticles;
 import net.daum.dna.api.vo.yozm.YozmUserInfo;
 import net.daum.dna.api.vo.yozm.YozmUserJoin;
 import net.daum.dna.api.vo.yozm.YozmUserJoined;
@@ -649,9 +649,9 @@ public class YozmDAO {
 	 *            the query string
 	 * @return the user articles
 	 */
-	public YozmUserArticlesSet getUserArticles(String queryString) {
+	public YozmUserArticles getUserArticles(String queryString) {
 		HttpURLConnection conn = null;
-		YozmUserArticlesSet response = new YozmUserArticlesSet();
+		YozmUserArticles response = new YozmUserArticles();
 		StringBuffer url = new StringBuffer();
 
 		try {
@@ -1078,11 +1078,11 @@ public class YozmDAO {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	private YozmUserArticlesSet parseUserArticles(HttpURLConnection conn) {
+	private YozmUserArticles parseUserArticles(HttpURLConnection conn) {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
 		Element root = null;
-		YozmUserArticlesSet response = new YozmUserArticlesSet();
+		YozmUserArticles response = new YozmUserArticles();
 
 		try {
 			System.out.println(util.changeToString(conn.getInputStream()));

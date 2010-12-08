@@ -432,7 +432,7 @@ public class DefaultYozmAPI implements YozmAPI {
 	 * @see net.daum.dna.api.YozmAPI#getUserArticles()
 	 */
 	@Override
-	public YozmUserArticlesSet getUserArticles() {
+	public YozmUserArticles getUserArticles() {
 		return service.getUserArticles();
 	}
 
@@ -442,7 +442,7 @@ public class DefaultYozmAPI implements YozmAPI {
 	 * @see net.daum.dna.api.YozmAPI#getUserArticles(net.daum.dna.params.Params)
 	 */
 	@Override
-	public YozmUserArticlesSet getUserArticles(Params option) {
+	public YozmUserArticles getUserArticles(Params option) {
 		return service.getUserArticles(option);
 	}
 
