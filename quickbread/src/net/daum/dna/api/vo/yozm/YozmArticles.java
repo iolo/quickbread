@@ -1,5 +1,6 @@
 package net.daum.dna.api.vo.yozm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // TODO: Auto-generated Javadoc
@@ -13,6 +14,11 @@ public class YozmArticles {
 	
 	/** The has more. */
 	private boolean hasMore;
+	
+	public YozmArticles (){
+		articleSet = new ArrayList<YozmArticleSet>();
+		
+	}
 
 	/**
 	 * Gets the articles.

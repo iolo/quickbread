@@ -30,7 +30,14 @@ public class YozmUserArticles {
 	/**
 	 * Instantiates a new yozm user articles.
 	 */
-	public YozmUserArticles () {}
+	public YozmUserArticles () {
+		writeArticle = new YozmArticle();
+		parentArticle = new YozmArticle();
+		originalArticle = new YozmArticle();
+		articleUserInfo = new YozmUserInfo();
+		parentUserInfo = new YozmUserInfo();
+		originalUserInfo =new YozmUserInfo();
+	}
 	
 	/**
 	 * Instantiates a new yozm user articles.
