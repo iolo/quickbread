@@ -88,5 +88,13 @@ public class YozmArticleSet {
 		this.parentArticle = parentArticle;
 		this.originalArticle = originalArticle;
 	}
+
+	@Override
+	public String toString() {
+		return "YozmArticleSet [originalArticle=" + originalArticle
+				+ ", parentArticle=" + parentArticle + ", writeArticle="
+				+ writeArticle + "]";
+	}
+	
 	
 }

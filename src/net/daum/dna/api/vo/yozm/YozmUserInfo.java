@@ -634,4 +634,22 @@ public class YozmUserInfo {
 		this.birthday = birthday;
 	}
 
+	@Override
+	public String toString() {
+		return "YozmUserInfo [URLName=" + URLName + ", age=" + age
+				+ ", birthday=" + birthday + ", blogURL=" + blogURL
+				+ ", bloodtype=" + bloodtype + ", disLikes=" + disLikes
+				+ ", doWellThings=" + doWellThings + ", followerCnt="
+				+ followerCnt + ", followingCnt=" + followingCnt
+				+ ", introduce=" + introduce + ", isBothFollow=" + isBothFollow
+				+ ", isFollow=" + isFollow + ", isFollower=" + isFollower
+				+ ", isOpenProfile=" + isOpenProfile + ", isOpenYozm="
+				+ isOpenYozm + ", jobName=" + jobName + ", jobType=" + jobType
+				+ ", likePlaces=" + likePlaces + ", likes=" + likes
+				+ ", messageCnt=" + messageCnt + ", nickName=" + nickName
+				+ ", profileBigImgURL=" + profileBigImgURL + ", profileImgURL="
+				+ profileImgURL + ", sex=" + sex + ", sexCode=" + sexCode + "]";
+	}
+
+	
 }

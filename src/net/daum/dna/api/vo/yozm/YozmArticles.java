@@ -70,4 +70,11 @@ public class YozmArticles {
 		articleSet.add(article);
 	}
 
+	@Override
+	public String toString() {
+		return "YozmArticles [articleSet=" + articleSet + ", hasMore="
+				+ hasMore + "]";
+	}
+
+	
 }
