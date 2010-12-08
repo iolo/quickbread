@@ -1,15 +1,15 @@
 #summary quickbread 1.2 Update Info
 
-= Introduction =
 
-quickbread-1.2b
+== 1.2b (rev.49) _2010/12/08_ ==
+ * \'UTF-8\' 인코딩 문제 해결 (다른 인코딩설정에서의 한글깨짐문제)
 
+== 1.2b (rev.48) _2010/12/06_ ==
+ * 일부 틀린 url 수정
+ * 일부 네이밍 수정
 
-= Details =
+== 1.1b _2010/11/25_ ==
+ * 특정 엘리먼트 없을 시 나는 예외 처리
 
-==- url 수정==
-public String articlesListAsJSON(String queryString) 함수에서 
-url.append(APIUtils._YOZM_WRITE_MESSAGE_URL) -> *url.append(APIUtils._YOZM_ARTICLE_LIST_URL)*
-
-==- 함수명 수정==
-String getArticlesXML(Params option) - > * String getArticlesAsXML(Params option) *
+== 1.0b _2010/11/25_ ==
+ * 최초 릴리즈
