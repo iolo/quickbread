@@ -1,4 +1,4 @@
-#summary quickbread 1.2 Update Info
+#summary quickbread Release Note
 
 
 == 1.2b (rev.49) _2010/12/08_ ==
