@@ -28,4 +28,9 @@ public class YozmUserJoined {
 		this.joined = joined;
 	}
 
+	@Override
+	public String toString() {
+		return "YozmUserJoined [joined=" + joined + "]";
+	}
+
 }

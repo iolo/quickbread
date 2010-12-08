@@ -27,5 +27,10 @@ public class YozmUserJoin {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "YozmUserJoin [status=" + status + "]";
+	}
 	
 }
