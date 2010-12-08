@@ -5,15 +5,21 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.daum.dna.api.vo.yozm.YozmArticle;
+import net.daum.dna.api.vo.yozm.YozmArticleSet;
+import net.daum.dna.api.vo.yozm.YozmArticles;
+import net.daum.dna.api.vo.yozm.YozmUserArticles;
+import net.daum.dna.api.vo.yozm.YozmUserInfo;
+import net.daum.dna.api.vo.yozm.YozmUserJoin;
+import net.daum.dna.api.vo.yozm.YozmUserJoined;
+import net.daum.dna.api.vo.yozm.YozmWriteRes;
+import net.daum.dna.oauth.DaumOAuth;
+import net.daum.dna.util.APIUtils;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-
-import net.daum.dna.api.vo.yozm.*;
-
-import net.daum.dna.oauth.DaumOAuth;
-import net.daum.dna.util.APIUtils;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -939,7 +945,8 @@ public class YozmDAO {
 		Document doc = null;
 		Element root = null;
 		YozmArticles response = new YozmArticles();
-		try {
+
+		try {		
 			doc = builder.build(conn.getInputStream());
 			root = doc.getRootElement();
 			if (util.isAPIError(root) == true)
