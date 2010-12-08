@@ -1,6 +1,5 @@
 package net.daum.dna.api;
 
-import java.util.List;
 
 import net.daum.dna.api.vo.yozm.*;
 import net.daum.dna.params.Params;
