@@ -1085,7 +1085,6 @@ public class YozmDAO {
 		List<YozmUserArticles> response = new ArrayList<YozmUserArticles>();
 
 		try {
-			System.out.println(util.changeToString(conn.getInputStream()));
 			doc = builder.build(conn.getInputStream());
 			root = doc.getRootElement();
 			if (util.isAPIError(root) == true)
