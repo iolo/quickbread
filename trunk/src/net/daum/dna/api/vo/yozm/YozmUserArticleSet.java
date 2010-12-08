@@ -4,7 +4,7 @@ package net.daum.dna.api.vo.yozm;
 /**
  * The Class YozmUserArticles.
  */
-public class YozmUserArticles {
+public class YozmUserArticleSet {
 	
 	/** The write article. */
 	private YozmArticle writeArticle;
@@ -30,7 +30,7 @@ public class YozmUserArticles {
 	/**
 	 * Instantiates a new yozm user articles.
 	 */
-	public YozmUserArticles () {
+	public YozmUserArticleSet () {
 		writeArticle = new YozmArticle();
 		parentArticle = new YozmArticle();
 		originalArticle = new YozmArticle();
@@ -49,7 +49,7 @@ public class YozmUserArticles {
 	 * @param originalUserInfo the original user info
 	 * @param hasMore the has more
 	 */
-	public YozmUserArticles(YozmArticle writeArticle,
+	public YozmUserArticleSet(YozmArticle writeArticle,
 			YozmArticle parentArticle, YozmArticle originalArticle,
 			YozmUserInfo articleUserInfo, YozmUserInfo parentUserInfo,
 			YozmUserInfo originalUserInfo, boolean hasMore) {
