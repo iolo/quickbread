@@ -18,8 +18,12 @@ public class YozmArticleSet {
 	/**
 	 * Instantiates a new yozm articles.
 	 */
-	public YozmArticleSet() {}
-	
+	public YozmArticleSet() {
+		writeArticle = new YozmArticle();
+		parentArticle = new YozmArticle();
+		originalArticle = new YozmArticle();
+		
+	}	
 	/**
 	 * Gets the write article.
 	 *
