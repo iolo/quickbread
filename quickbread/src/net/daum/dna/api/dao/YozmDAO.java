@@ -946,7 +946,7 @@ public class YozmDAO {
 				return null;
 
 			@SuppressWarnings("unchecked")
-			List<Element> childList = root.getChildren("message");
+			List<Element> childList = root.getChild("msg_list").getChildren("message");
 			for (Element em : childList) {
 				YozmArticleSet articles = new YozmArticleSet();
 
@@ -1083,7 +1083,7 @@ public class YozmDAO {
 			if (util.isAPIError(root) == true)
 				return null;
 
-			List<Element> childList = root.getChildren("message");
+			List<Element> childList = root.getChild("msg_list").getChildren("message");
 
 			if (util.isValidElement(childList)) {
 				for (Element em : childList) {
