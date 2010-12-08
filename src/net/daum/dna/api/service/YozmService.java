@@ -381,7 +381,6 @@ public class YozmService {
 	public YozmArticles articlesList() {
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(APIUtils._XML);
-
 		return yozmDAO.articlesList(queryString.toString());
 	}
 
