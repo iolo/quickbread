@@ -2,13 +2,13 @@ package net.daum.dna.api.dao;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
 
 import net.daum.dna.api.vo.yozm.YozmArticle;
 import net.daum.dna.api.vo.yozm.YozmArticleSet;
 import net.daum.dna.api.vo.yozm.YozmArticles;
-import net.daum.dna.api.vo.yozm.YozmUserArticles;
+import net.daum.dna.api.vo.yozm.YozmUserArticleSet;
+import net.daum.dna.api.vo.yozm.YozmUserArticlesSet;
 import net.daum.dna.api.vo.yozm.YozmUserInfo;
 import net.daum.dna.api.vo.yozm.YozmUserJoin;
 import net.daum.dna.api.vo.yozm.YozmUserJoined;
@@ -649,9 +649,9 @@ public class YozmDAO {
 	 *            the query string
 	 * @return the user articles
 	 */
-	public List<YozmUserArticles> getUserArticles(String queryString) {
+	public YozmUserArticlesSet getUserArticles(String queryString) {
 		HttpURLConnection conn = null;
-		List<YozmUserArticles> response = new ArrayList<YozmUserArticles>();
+		YozmUserArticlesSet response = new YozmUserArticlesSet();
 		StringBuffer url = new StringBuffer();
 
 		try {
@@ -872,7 +872,7 @@ public class YozmDAO {
 				return null;
 
 			@SuppressWarnings("unchecked")
-			List<Element> childList = root.getChildren("message");
+			List<Element> childList = root.getChild("msg_list").getChildren("message");
 			if (util.isValidElement(childList)) {
 
 				for (Element em : childList) {
@@ -1078,13 +1078,14 @@ public class YozmDAO {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	private List<YozmUserArticles> parseUserArticles(HttpURLConnection conn) {
+	private YozmUserArticlesSet parseUserArticles(HttpURLConnection conn) {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
 		Element root = null;
-		List<YozmUserArticles> response = new ArrayList<YozmUserArticles>();
+		YozmUserArticlesSet response = new YozmUserArticlesSet();
 
 		try {
+			System.out.println(util.changeToString(conn.getInputStream()));
 			doc = builder.build(conn.getInputStream());
 			root = doc.getRootElement();
 			if (util.isAPIError(root) == true)
@@ -1094,7 +1095,7 @@ public class YozmDAO {
 
 			if (util.isValidElement(msgList)) {
 				for (Element em : msgList) {
-					YozmUserArticles tempArticles = new YozmUserArticles();
+					YozmUserArticleSet tempArticles = new YozmUserArticleSet();
 
 					if (util.isValidElement(em))
 						tempArticles.setWriteArticle(parseArticle(em));
@@ -1114,7 +1115,7 @@ public class YozmDAO {
 						if (util.isValidElement(em.getChild("originam_msg").getChild("user")))
 							tempArticles.setOriginalUserInfo(parseInfo(em.getChild("original_msg").getChild("user")));
 					}
-					response.add(tempArticles);
+					response.addUserArticle(tempArticles);
 				}
 			}
 		} catch (JDOMException e) {
