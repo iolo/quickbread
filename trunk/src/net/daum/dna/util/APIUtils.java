@@ -166,7 +166,7 @@ public class APIUtils {
 
 		try {
 			for (int i; (i = is.read(b)) != -1;) {
-				out.append(new String(b, 0, i));
+				out.append(new String(b, 0, i, "UTF-8"));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
