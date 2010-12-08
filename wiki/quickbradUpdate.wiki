@@ -1,5 +1,9 @@
 #summary quickbread Release Note
 
+== 1.3b _2010/12/08_ ==
+ * YozmAPI 개선 , YozmAPI 의 Class 추가
+   기타 버그 수정
+
 == 1.2b (rev.28) _2010/12/08_ ==
  * vo객체의 toString method 수정
 
