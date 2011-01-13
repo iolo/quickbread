@@ -530,7 +530,7 @@ public class YozmService {
 	 * 
 	 * @return the user articles
 	 */
-	public List<YozmUserArticles> getUserArticles() {
+	public YozmUserArticles getUserArticles() {
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(APIUtils._XML);
 		return yozmDAO.getUserArticles(queryString.toString());
@@ -543,7 +543,7 @@ public class YozmService {
 	 *            the option
 	 * @return the user articles
 	 */
-	public List<YozmUserArticles> getUserArticles(Params option) {
+	public YozmUserArticles getUserArticles(Params option) {
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(APIUtils._XML);
 		queryString.append(APIUtils.getInstance().buildQueryString(option));

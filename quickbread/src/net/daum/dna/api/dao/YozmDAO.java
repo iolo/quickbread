@@ -643,9 +643,9 @@ public class YozmDAO {
 	 *            the query string
 	 * @return the user articles
 	 */
-	public List<YozmUserArticles> getUserArticles(String queryString) {
+	public YozmUserArticles getUserArticles(String queryString) {
 		HttpURLConnection conn = null;
-		List<YozmUserArticles> response = new ArrayList<YozmUserArticles>();
+		YozmUserArticles response = new YozmUserArticles();
 		StringBuffer url = new StringBuffer();
 
 		try {
@@ -822,7 +822,7 @@ public class YozmDAO {
 		if (util.isValidElement(em.getChild("pub_date")))
 			msg.setPubDate(em.getChild("pub_date").getValue());
 
-		if (em.getChild("user").getContentSize() != 0) {
+		if (util.isValidElement(em.getChild("user"))) {
 			Element elemUser = em.getChild("user");
 			if (util.isValidElement(elemUser.getChild("url_name")))
 				msg.setUserURLName(elemUser.getChild("url_name").getValue());
@@ -831,7 +831,7 @@ public class YozmDAO {
 			if (util.isValidElement(elemUser.getChild("profile_img_url")))
 				msg.setUserProfileImgURL(elemUser.getChild("profile_img_url").getValue());
 		}
-		if (em.getChild("attachment").getContentSize() != 0) {
+		if (util.isValidElement(em.getChild("attachment"))) {
 			Element elemAttachment = em.getChild("attachment");
 			if (util.isValidElement(elemAttachment.getChild("key")))
 				msg.setAttachmentKey(elemAttachment.getChild("key").getValue());
@@ -951,14 +951,19 @@ public class YozmDAO {
 				YozmArticleSet articles = new YozmArticleSet();
 
 				if (util.isValidElement(em))
+				{
 					articles.setWriteArticle(parseArticle(em));
-			
-				if (util.isValidElement(em.getChild("parent_msg")))
-					articles.setParentArticle(parseArticle(em.getChild("parent_msg")));
-
-				if (util.isValidElement(em.getChild("original_msg")))
-					articles.setParentArticle(parseArticle(em.getChild("original_msg")));
-
+					
+					if (util.isValidElement(em.getChild("parent_msg")))
+						articles.setParentArticle(parseArticle(em.getChild("parent_msg")));
+					else if (util.isValidElement(em.getChild("original_msg")))
+					{
+						Element tempArticle = em.getChild("original_msg");
+						articles.setOriginalArticle(parseArticle(tempArticle));
+						if(util.isValidElement(tempArticle.getChild("parent_msg")))
+							articles.setParentArticle(parseArticle(tempArticle.getChild("parent_msg")));
+					}	
+				}
 				response.addArticle(articles);
 			}
 		} catch (JDOMException e) {
@@ -1071,11 +1076,11 @@ public class YozmDAO {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	private List<YozmUserArticles> parseUserArticles(HttpURLConnection conn) {
+	private YozmUserArticles parseUserArticles(HttpURLConnection conn) {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
 		Element root = null;
-		List<YozmUserArticles> response = new ArrayList<YozmUserArticles>();
+		YozmUserArticles response = new YozmUserArticles();
 
 		try {
 			doc = builder.build(conn.getInputStream());
@@ -1087,26 +1092,35 @@ public class YozmDAO {
 
 			if (util.isValidElement(childList)) {
 				for (Element em : childList) {
-					YozmUserArticles tempArticles = new YozmUserArticles();
+					YozmUserArticle tempArticle = new YozmUserArticle();
 
 					if (util.isValidElement(em))
-						tempArticles.setWriteArticle(parseArticle(em));
+						tempArticle.setWriteArticle(parseArticle(em));
 					if (util.isValidElement(em.getChild("user")))
-						tempArticles.setArticleUserInfo(parseInfo(em.getChild("user")));
+						tempArticle.setArticleUserInfo(parseInfo(em.getChild("user")));
 
 					if (util.isValidElement(em.getChild("parent_msg"))) {
-						if (util.isValidElement(em.getChild("parent_msg")))
-							tempArticles.setParentArticle(parseArticle(em.getChild("parent_msg")));
+							tempArticle.setParentArticle(parseArticle(em.getChild("parent_msg")));
+							
 						if (util.isValidElement(em.getChild("parent_msg").getChild("user")))
-							tempArticles.setParentUserInfo(parseInfo(em.getChild("parent_msg").getChild("user")));
+							tempArticle.setParentUserInfo(parseInfo(em.getChild("parent_msg").getChild("user")));
 					}
-					if (util.isValidElement(em.getChild("originam_msg"))) {
-						if (util.isValidElement(em.getChild("original_msg")))
-							tempArticles.setOriginalArticle(parseArticle(em.getChild("original_msg")));
-						if (util.isValidElement(em.getChild("originam_msg").getChild("user")))
-							tempArticles.setOriginalUserInfo(parseInfo(em.getChild("original_msg").getChild("user")));
+					if (util.isValidElement(em.getChild("original_msg"))) {
+						//Original 의 상위 Parent Message 여부 확인.
+						Element tempChild = em.getChild("original_msg");
+						if (util.isValidElement(tempChild.getChild("parent_msg")))
+						{
+							tempArticle.setParentArticle(parseArticle(tempChild.getChild("parent_msg")));
+							if (util.isValidElement(tempChild.getChild("parent_msg").getChild("user")))
+								tempArticle.setParentArticle(parseArticle(tempChild.getChild("parent_msg").getChild("user")));
+						}
+												
+						tempArticle.setOriginalArticle(parseArticle(em.getChild("original_msg")));
+						
+						if (util.isValidElement(em.getChild("original_msg").getChild("user")))
+							tempArticle.setOriginalUserInfo(parseInfo(em.getChild("original_msg").getChild("user")));
 					}
-					response.add(tempArticles);
+					response.addUserArticle(tempArticle);
 				}
 			}
 		} catch (JDOMException e) {

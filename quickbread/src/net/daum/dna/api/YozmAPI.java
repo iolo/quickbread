@@ -372,7 +372,7 @@ public interface YozmAPI {
 	 * 
 	 * @return 글 목록을 객체 형태 또는 null 반환.
 	 */
-	public List<YozmUserArticles> getUserArticles();
+	public YozmUserArticles getUserArticles();
 
 	/**
 	 * 특정 사용자의 글 목록을 가져온다.
@@ -385,7 +385,7 @@ public interface YozmAPI {
 	 *            
 	 * @return 글 목록을 객체 형태 또는 null 반환.
 	 */
-	public List<YozmUserArticles> getUserArticles(Params option);
+	public YozmUserArticles getUserArticles(Params option);
 
 	/**
 	 * 특정 사용자의 글 목록을 가져온다.
