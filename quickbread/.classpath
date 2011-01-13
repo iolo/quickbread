@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/json-lib-2.3-jdk15.jar"/>
 	<classpathentry kind="lib" path="lib/signpost-core-1.2.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/XMLtoJSON.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/DAUM/바탕 화면/External Jar/quickbread-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
