@@ -1,7 +1,5 @@
 package net.daum.dna.api.service;
 
-import java.util.List;
-
 import net.daum.dna.api.dao.YozmDAO;
 import net.daum.dna.api.vo.yozm.*;
 

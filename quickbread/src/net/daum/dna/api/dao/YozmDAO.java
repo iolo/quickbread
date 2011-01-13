@@ -2,7 +2,6 @@ package net.daum.dna.api.dao;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jdom.Document;
