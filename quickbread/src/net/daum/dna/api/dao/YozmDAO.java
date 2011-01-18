@@ -1028,7 +1028,7 @@ public class YozmDAO {
 		if (util.isValidElement(user_elem.getChild("job_name")))
 			info.setJobName(user_elem.getChild("job_name").getValue());
 
-		if (util.isValidElement(em.getChild("likes")))
+		if (util.isValidElement(em.getChild("nickname")))
 			info.setNickName(em.getChild("nickname").getValue());
 		if (util.isValidElement(em.getChild("url_name")))
 			info.setURLName(em.getChild("url_name").getValue());
