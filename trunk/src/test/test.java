@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Scanner;
+
 import junit.framework.TestCase;
 import net.daum.dna.api.YozmAPI;
 import net.daum.dna.api.basic.DefaultYozmAPI;
@@ -224,5 +226,16 @@ public class test extends TestCase {
 	public void testGetUserArticlesAsJSONParams() {
 		fail("Not yet implemented");
 	}
-
+	
+	//Token 받기 로직
+	public void GetDaumToken(String consumer , String con_token , String callbackurl) throws Exception {
+		DefaultDaumOAuth oauth;
+		oauth = new DefaultDaumOAuth(consumer, con_token , callbackurl);
+		System.out.println(oauth.getAuthorizeURL());
+		Scanner sc = new Scanner(System.in);
+		String verifier = sc.nextLine();
+		DaumToken token = oauth.getAccessToken(verifier);
+		System.out.println(token);
+		
+	}
 }
