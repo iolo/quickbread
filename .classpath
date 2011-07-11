@@ -7,6 +7,6 @@
 	<classpathentry kind="lib" path="lib/jdom-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/json-lib-2.3-jdk15.jar"/>
 	<classpathentry kind="lib" path="lib/signpost-core-1.2.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/workspace/quickbread/lib/xmlToJson.jar"/>
+	<classpathentry kind="lib" path="lib/xmlToJson.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

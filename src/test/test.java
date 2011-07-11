@@ -9,7 +9,6 @@ import net.daum.dna.oauth.DaumOAuth;
 import net.daum.dna.oauth.basic.DefaultDaumOAuth;
 import net.daum.dna.oauth.vo.DaumConsumer;
 import net.daum.dna.oauth.vo.DaumToken;
-import net.daum.dna.params.Params;
 
 public class test extends TestCase {
 
