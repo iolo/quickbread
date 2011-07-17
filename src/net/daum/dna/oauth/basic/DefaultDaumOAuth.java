@@ -29,7 +29,7 @@ public class DefaultDaumOAuth extends DefaultOAuthConsumer implements DaumOAuth 
 	private OAuthProvider oauthProvider;
 	
 	/** The callback. */
-	private String callback;
+	private String callback = "oob";
 
 	/**
 	 * Instantiates a new default daum oauth.
@@ -39,8 +39,9 @@ public class DefaultDaumOAuth extends DefaultOAuthConsumer implements DaumOAuth 
 	 */
 	public DefaultDaumOAuth( DaumConsumer consumer ) throws Exception {
 		super( consumer.getKey(), consumer.getSecret() );
+		this.callback = consumer.getCallback(); 
 		try {
-			 createOAuthProvider();
+			 this.oauthProvider = createOAuthProvider();
 		} catch (Exception e) {
 			throw new OAuthCommonException();
 		}
